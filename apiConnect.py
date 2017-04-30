@@ -1,11 +1,12 @@
 import requests
 import json
+from random import randint
 
 def connectGiphy():
     baseurl= "http://api.giphy.com/v1/gifs/"
     api_key= "dc6zaTOxFJmzC"
     query = "cat"
-    limit="1"
+    limit="50"
     baseurl= baseurl+"search?q="+query+"&api_key="+api_key+"&limit="+limit
     response=makeConnection(baseurl)
     output=retriveGiphyData(response)
@@ -23,7 +24,8 @@ def makeConnection(baseurl):
 
 def retriveGiphyData(response):
     data = response["data"]
-    data= data[0]
+    num =randint(0,len(data)-1)
+    data= data[num]
     images = data["images"]
     image= images["fixed_height"]
     output = {

@@ -9,5 +9,4 @@ def makeImageResponse(result):
       }
     }
     message.append(data)
-
     return message
