@@ -2,10 +2,10 @@ import requests
 import json
 from random import randint
 
-def connectGiphy():
+def connectGiphy(queries):
     baseurl= "http://api.giphy.com/v1/gifs/"
     api_key= "dc6zaTOxFJmzC"
-    query = "cat"
+    query = queries
     limit="50"
     baseurl= baseurl+"search?q="+query+"&api_key="+api_key+"&limit="+limit
     response=makeConnection(baseurl)

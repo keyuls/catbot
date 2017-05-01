@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request
 import apiConnect as ac
 import facebookResponse as fr
 import platformConnect as pc
@@ -16,7 +16,8 @@ def hello_world():
 
 @app.route('/gif')
 def send_gif():
-    result=ac.connectGiphy()
+    query = request.args.get('query')
+    result=ac.connectGiphy(query)
     result= fr.makeImageResponse(result)
     #result = pc.makeCfResponse(result)
     result = json.dumps(result, indent=4)
