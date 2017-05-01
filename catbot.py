@@ -17,7 +17,8 @@ def hello_world():
 @app.route('/gif')
 def send_gif():
     query = request.args.get('query')
-    result=ac.connectGiphy(query)
+    number = request.args.get('number')
+    result=ac.connectGiphy(query,number)
     result= fr.makeImageResponse(result)
     #result = pc.makeCfResponse(result)
     result = json.dumps(result, indent=4)
